@@ -1,55 +1,65 @@
+# Python Obfuscator
 
-# python-obfuscator
-different obfuscator/encryptions methods made by me and some from others in the comunnity.
+A versatile tool for obfuscating Python code using a variety of techniques, including custom methods and contributions from the community. This tool is designed to make your Python code highly resistant to reverse engineering while ensuring that it remains fully functional for execution.
 
-Obfuscate your python code to make it almost impsossible to read but a computer can still understand it without a flaw.
+# Key Features
 
-(Sorry for shit documentation and horrible commenting. Also sorry for the terrible variable names lol :)
+- Obfuscation Layers: Apply multiple layers of encryption and encoding to make code virtually unreadable to humans while remaining interpretable by machines.
+- Modular Architecture (Version 2): Easily expandable with custom modules to fit your specific needs.
+- Integrated Tools: Includes optional features like error encryption and virtual machine (VM) detection for enhanced security.
 
-# Update V2.4
-Added Kramer obfuscation method as an external module (#3) (https://github.com/billythegoat356/Kramer)
+# Version Updates
+Version 2.4
+- Added the Kramer obfuscation method as an external module (#3).
+- Implemented a version checker to ensure compatibility between the repository and client versions.
+Version 2
+- Transitioned to a modular design for better scalability and customization.
+- Introduced additional tools, including error encryption and VM detection, all of which can be configured to your preferences.
 
-Added a version check t ocheck version of repo and client version.
+# Obfuscation Options
+Obfuscation Layers
+Each layer provides a unique level of encryption or encoding to protect your code:
 
-# V2 RELEASE! Info:
+Layer 1: Initial Base64 encoding.
 
-V2 comes built with modules instead of using one big file, so the code can be expanded and even you can create your own modules for expansion!
+Layer 2: Combines binary encryption and list-based encoding.
 
-V2 also comes in with other built in tools! Such as error encrypting and VM detection. All of which can be modified to your taste!
+Layer 3: Code splitting using patterns of 1 and i.
 
-# Options! (and the meaning of each one)
+Layer 4: Secondary Base64 encoding with a modified approach.
 
-Each option of the obfuscator is used for a purpose, here I will tell you what they mean and what they do.
+Layer 5: Pickle serialization to obscure readability.
 
-Layers:
-  - Layer 1: This layer is for the first iteration of base64 encoding.
-  - Layer 2: This is 2 layers in one, it is a combination of binary encryption and list encrypting.
-  - Layer 3: Layer 3 is splitting of the code with 1's and i's.
-  - Layer 4: Secondary base64 encryption this time with a different method 
-  - Layer 5: Pickle serialization so it can't be read by a human.
-  - Layer 6: Pickle serialization for no-tamper exploitation. When unserialized the code is ran to check if someone has tampered with the code
-External Layers:
-  - Layer 1: py_fuscate method
-  - Layer 2: wodx_obfuscate method
-  - Layer 3: kramer method
+Layer 6: Pickle serialization with anti-tamper functionality; the deserialized code checks for tampering.
 
-custom_input (True/False): If True a custom input of a file will be needed to then be imported as code. If False a varaible will be used to determine the code to obfuscate. 
+# External Layers:
 
-custom_output (True/False): If True the output of the encrypted file will be output as what you set it to. If false the code will be exported as "obfuscated.py" and rewrite any other "obfuscated.py" that was there (if any).
+- py_fuscate method
+- wodx_obfuscate method
+- Kramer method
 
-speed_test (True/False): If true your code will be ran with subproccess.call to test speed difference in normal obfuscation vs ast obfsucation. (Wonky and really weird I really just used this to debug stuff)
+# Configuration Options
 
-add_vm_detection_to_script (True/False): This will add the vm detection to your code at the very top of it. Learn more about the code in vmcheck_code.txt.
+custom_input (True/False): Determines whether to input the code from a custom file (True) or use a variable (False).
 
-minify_original_code (True/False): This will use python minifier to make your code smaller. This could be considered a obfuscation tenique as well.
+custom_output (True/False): If True, specifies a custom filename for the obfuscated output. If False, outputs as obfuscated.py, overwriting any existing file with the same name.
 
-add_error_encryption (True/False): This will add error encryption to your program, you will get a private_key.pem to use to decrypt errors. If your program encounters an error the end user will not be able to see the error. (Use error_decoder.py to decode errors so you can see what the error is)
+speed_test (True/False): Runs a subprocess to compare performance between standard and AST-based obfuscation. (Primarily for debugging purposes.)
 
-do_ast_encrypt (True/False): This will try to do the ast encryption making your code lots safer, but making it quite a bit slower. It's very buggy fyi.
+add_vm_detection_to_script (True/False): Inserts VM detection code at the beginning of your script. Refer to vmcheck_code.txt for more details.
 
-var_type (1, 2, and 3): This will determine how you want your names/patterns of the variables used. 
-1=1,0
-2=I,1
-3=O,0
+minify_original_code (True/False): Minifies your code to reduce its size, serving as an additional obfuscation layer.
 
+add_error_encryption (True/False): Encrypts error messages, generating a private_key.pem for decryption. Use error_decoder.py to view the errors during debugging.
 
+do_ast_encrypt (True/False): Applies AST-based encryption for heightened security. Note: This can significantly slow down execution and is considered experimental.
+
+var_type (1, 2, or 3): Specifies the naming convention for variables:
+
+1 = Numeric (1, 0)
+
+2 = Alphanumeric (I, 1)
+
+3 = Alphabetic (O, 0)
+
+This tool is designed with flexibility and customization in mind. While the documentation and variable names are subject to improvement, the functionality delivers robust protection for your Python scripts.
